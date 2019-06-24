@@ -18,8 +18,6 @@ module Model
     puts username 
     puts password
     hashed_password = get_hashed_password(username)
-    puts hashed_password
-    puts hashed_password[0]
     if BCrypt::Password.new(hashed_password) == password
       #insert session here!
       return true
@@ -48,7 +46,6 @@ module Model
   def register(username,password)
     db = connect()
     hashed_password = BCrypt::Password.create(password)
-    puts username, password,hashed_password
     insert_new_user(username,hashed_password)
     #Insert validateion/error-hantering here!
     return true
